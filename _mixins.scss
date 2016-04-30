@@ -70,4 +70,34 @@
         }
         padding: 10px 5px;
     }
+    
+//*******************************************************
+//uso de loop for
 
+$color-headlines: $blue, $purple, $green,
+    $red, $orange, $yellow;
+
+h1,h2,h3,h4,h5,h6 {
+    font-family: $font-highlight;
+}
+
+@for $item from 1 through length($color-headlines) {
+    h#{$item} {
+        color: nth($color-headlines, $item);
+    }
+}
+
+//******************************************************
+//uso de @each
+//deve ter btn-deafult,btn-hot,btn-cool... no código html como classe
+$color-btn-names: 'default', 'hot', 'cool';
+$color-btn-values: $color-main, $red, $blue;
+
+@each $name in $color-btn-names {
+    $i: index($color-btn-names, $name);
+
+    .btn-#{$name} {
+        @extend %btn;
+        background-color: nth($color-btn-values, $i);
+    }
+}
