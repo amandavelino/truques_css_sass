@@ -95,9 +95,38 @@ $color-btn-values: $color-main, $red, $blue;
 
 @each $name in $color-btn-names {
     $i: index($color-btn-names, $name);
-
     .btn-#{$name} {
         @extend %btn;
         background-color: nth($color-btn-values, $i);
     }
 }
+
+//**************************************************
+//trabalhando com map data type (associative arrays), muito melhor que o exemplo acima...
+
+$color-btn: (
+    default: $color-main,
+    hot: $red,
+    cool: $blue
+);
+
+@each $key,$value in $color-btn {
+    .btn-#{$key} {
+        @extend %btn;
+        background-color: $value;
+    }
+}
+
+//mixin paa border radius
+
+@mixin rounded ($radius: 10px) {
+ 
+    -webkit-border-raiuds: $radius;
+    border-radius: $radius;
+    background-clip: padding-box;
+
+}
+
+//pesquisar mais em:
+//sass-lang.com
+//thesassway.com
