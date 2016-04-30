@@ -34,3 +34,21 @@
         margin-bottom: 0;
     }
 }
+//**********************************************************//
+
+@mixin break($length) {
+    @media (min-width: $length) {
+        //da largura x até a largura mínima de $lentgh
+        //ex.: 1000px da largura x até 1000px abaixo disto já não funciona o código
+        //(@content) descrito aqui....
+        @content;
+    }
+}
+
+ ul li {
+        @include break(760px) {
+            float: right; // = @content -> conteúdo a ser executado...
+        }
+        padding: 10px 5px;
+    }
+
