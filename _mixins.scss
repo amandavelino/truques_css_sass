@@ -45,6 +45,25 @@
     }
 }
 
+//break com conditions, usar o exemplo abaixo mais completo
+//$args... indica quantos argumentos passados aqui...
+//se só um toma o min-width se dois toma o min-width e max-width
+//$args... list em SASS
+
+@mixin break($args...) {
+    @if length($args) == 1 {
+        @media (min-width: nth($args, 1)) {
+            @content;
+        }
+    } @else {
+        @media (min-width: nth($args, 1))
+            and (max-width: nth($args, 2)) {
+            @content;
+        }
+    }
+
+}
+
  ul li {
         @include break(760px) {
             float: right; // = @content -> conteúdo a ser executado...
